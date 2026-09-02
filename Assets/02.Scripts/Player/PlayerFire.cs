@@ -7,14 +7,17 @@ public class PlayerFire : MonoBehaviour
     // - 총알 프리팹
     public GameObject BulletPrefab;
     // - 생성 위치 (총구)
-    public Transform FirePoint;
+    public Transform FirePoint1;
+    public Transform FirePoint2;
     
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject bullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
-            bullet.transform.position = FirePoint.position;
+            GameObject bullet1 = Instantiate(BulletPrefab, transform.position, transform.rotation);
+            bullet1.transform.position = FirePoint1.position;
+            GameObject bullet2 = Instantiate(BulletPrefab, transform.position, transform.rotation);
+            bullet2.transform.position = FirePoint2.position;
         }
         
     }

@@ -45,7 +45,7 @@ public class ReplayInvoker : MonoBehaviour
 
     public void Replay(Queue<Command> commandQueue, float speed, float yMin, float xMax)
     {
-        transform.position = _initialPosition;
+        transform.position = new Vector3(_initialPosition.x, _initialPosition.y, 0);
         _commandQueue = new Queue<Command>(commandQueue);
         _initialSpeed = speed;
         _yMin = yMin;
