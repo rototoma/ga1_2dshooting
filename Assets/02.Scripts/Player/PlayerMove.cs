@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
     // 필요 필드:
     public float Speed;
     public float yMin;
+    public float xMax;
     
     private void Update()
     {
@@ -21,6 +22,14 @@ public class PlayerMove : MonoBehaviour
         if (transform.position.y < yMin && direction.y<=0)
         {
             direction.y = 0;
+        }
+        if (transform.position.x < -xMax && direction.x<=0)
+        {
+            transform.position = new Vector3(-transform.position.x, transform.position.y, 0); 
+        }
+        if (transform.position.x > xMax && direction.x>=0)
+        {
+            transform.position = new Vector3(-transform.position.x, transform.position.y, 0); 
         }
         
         Vector2 normalizedSpeed = (direction * Speed).normalized;
