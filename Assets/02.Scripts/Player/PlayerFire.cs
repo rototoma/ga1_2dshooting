@@ -12,14 +12,26 @@ public class PlayerFire : MonoBehaviour
 
     public float coolDownAmount;
     private float _coolDown;
+
+    public bool toggleAutoAttack = false;
     
     private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            toggleAutoAttack = !toggleAutoAttack;
+        }
+        
+        Fire();
+    }
+
+    private void Fire()
     {
         if (_coolDown > 0f)
         {
             _coolDown -= Time.deltaTime;
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        else if (toggleAutoAttack || Input.GetKeyDown(KeyCode.Space))
         {
             GameObject bulletLeft = Instantiate(BulletPrefab, transform.position, transform.rotation);
             bulletLeft.transform.position = FirePointLeft.position;

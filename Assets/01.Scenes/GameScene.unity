@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 145465479}
   m_Layer: 0
-  m_Name: FirePoint
+  m_Name: FirePointRight
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -242,8 +242,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 145465479}
   - {fileID: 248983464}
+  - {fileID: 145465479}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &155925053
@@ -289,9 +289,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerFire
   BulletPrefab: {fileID: 5739272239331942939, guid: 9ed9d354e1b89984d9d91d96b036c622, type: 3}
-  FirePoint1: {fileID: 145465479}
-  FirePoint2: {fileID: 248983464}
-  coolDownAmount: 3
+  FirePointLeft: {fileID: 248983464}
+  FirePointRight: {fileID: 145465479}
+  coolDownAmount: 1
+  toggleAutoAttack: 0
 --- !u!1 &248983463
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 248983464}
   m_Layer: 0
-  m_Name: FirePoint (1)
+  m_Name: FirePointLeft
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
