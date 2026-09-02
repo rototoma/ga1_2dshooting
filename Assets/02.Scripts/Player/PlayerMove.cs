@@ -15,7 +15,12 @@ public class PlayerMove : MonoBehaviour
         float h = Input.GetAxis("Horizontal");  // 키보드 왼.오른쪽 입력 상태에 따라 -1f~0~1f
         float v = Input.GetAxis("Vertical");    // 키보드 위.아래 입력 상태에 따라 -1f~0~1f
         
+        // float h = Input.GetAxisRaw("Horizontal");  // 키보드 왼.오른쪽 입력 상태에 따라 -1 0 1
+        // float v = Input.GetAxisRaw("Vertical");    // 키보드 위.아래 입력 상태에 따라 -1 0 1
+        
         Vector2 direction = new Vector2(h, v);
+
+        Vector2 normalizedSpeed = (direction * Speed).normalized;
         
         // 3. 방향과 속도에 따라 이동한다.
         transform.Translate(direction * Speed * Time.deltaTime);
