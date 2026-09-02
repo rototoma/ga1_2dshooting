@@ -7,10 +7,21 @@ public class PlayerMove : MonoBehaviour
     public float Speed;
     public float yMin;
     public float xMax;
+    public float speedMultiplier;
     
     private void Update()
     {
         // 1. 키보드 입력을 받는다.
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Speed *= speedMultiplier;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Speed /= speedMultiplier;
+        }
+        
         float h = Input.GetAxis("Horizontal");  // 키보드 왼.오른쪽 입력 상태에 따라 -1f~0~1f
         float v = Input.GetAxis("Vertical");    // 키보드 위.아래 입력 상태에 따라 -1f~0~1f
         
@@ -32,10 +43,9 @@ public class PlayerMove : MonoBehaviour
             transform.position = new Vector3(-transform.position.x, transform.position.y, 0); 
         }
         
-        Vector2 normalizedSpeed = (direction * Speed).normalized;
         
         // 3. 방향과 속도에 따라 이동한다.
-        transform.Translate(normalizedSpeed * Time.deltaTime);
+        transform.Translate(direction * Speed * Time.deltaTime);
         // == transform.position = transform.position + (Vector3)direction * Speed * Time.deltaTime;
     }
 }
