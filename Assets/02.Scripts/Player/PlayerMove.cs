@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     public float speedMultiplier;
 
     public bool replay = false;
-    private Queue<Command> _commandQueue = new Queue<Command>();
+    private Queue<(Vector2, float)> _commandQueue = new Queue<(Vector2, float)>();
     
     public ReplayInvoker ReplayInvoker = new ReplayInvoker();
 
@@ -22,19 +22,20 @@ public class PlayerMove : MonoBehaviour
     
     private void Update()
     {
-        if (replay) return;
-        
-        // 1. 키보드 입력을 받는다.
-        SpeedChange();
-
-        Move();
-        
-        // == transform.position = transform.position + (Vector3)direction * Speed * Time.deltaTime;
-
         if (replay)
         {
             ReplayInvoker.Replay(_commandQueue, Speed, yMin, xMax);
+            replay = false;
+            _commandQueue.Clear();
         }
+        else
+        {
+            SpeedChange();
+            Move();
+        }
+        
+        // == transform.position = transform.position + (Vector3)direction * Speed * Time.deltaTime;
+        
     }
 
     private void SpeedChange()
@@ -76,6 +77,6 @@ public class PlayerMove : MonoBehaviour
         
         // 3. 방향과 속도에 따라 이동한다.
         transform.Translate(direction * Speed * Time.deltaTime);
-        _commandQueue.Enqueue(new Command(direction, Time.deltaTime));
+        _commandQueue.Enqueue((direction, Time.deltaTime));
     }
 }

@@ -9,47 +9,45 @@ public class ReplayInvoker : MonoBehaviour
     private float _initialSpeed;
     private float _yMin;
     private float _xMax;
-    private Queue<Command> _commandQueue = new Queue<Command>();
+    private Queue<(Vector2, float)> _commandQueue = new Queue<(Vector2, float)>();
     
     private void Update()
     {
         if (_commandQueue.Count != 0)
         {
-            Command command = _commandQueue.Dequeue();
-
-            if (transform.position.y >= 0 && command.Direction.y >= 0)
+            (Vector2 dir, float time) command = _commandQueue.Dequeue();
+            if (transform.position.y >= 0 && command.dir.y>=0)
             {
-                command.Direction.y = 0;
+                command.dir.y = 0;
             }
-
-            if (transform.position.y < _yMin && command.Direction.y <= 0)
+            if (transform.position.y < _yMin && command.dir.y<=0)
             {
-                command.Direction.y = 0;
+                command.dir.y = 0;
             }
-
-            if (transform.position.x < -_xMax && command.Direction.x <= 0)
+            if (transform.position.x < -_xMax && command.dir.x<=0)
             {
-                transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
+                transform.position = new Vector3(-transform.position.x, transform.position.y, 0); 
             }
-
-            if (transform.position.x > _xMax && command.Direction.x >= 0)
+            if (transform.position.x > _xMax && command.dir.x>=0)
             {
-                transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
+                transform.position = new Vector3(-transform.position.x, transform.position.y, 0); 
             }
-
 
             // 3. 방향과 속도에 따라 이동한다.
-            transform.Translate(command.Direction * _initialSpeed * command.DeltaTime);
+            transform.Translate(command.dir * _initialSpeed * command.time);
         }
     }
 
-    public void Replay(Queue<Command> commandQueue, float speed, float yMin, float xMax)
+    public void Replay(Queue<(Vector2, float)> commandQueue, float speed, float yMin, float xMax)
     {
-        transform.position = new Vector3(_initialPosition.x, _initialPosition.y, 0);
-        _commandQueue = new Queue<Command>(commandQueue);
-        _initialSpeed = speed;
-        _yMin = yMin;
-        _xMax = xMax;
+        if (_commandQueue.Count == 0)
+        {
+            transform.position = new Vector2(_initialPosition.x, _initialPosition.y);
+            _commandQueue = new Queue<(Vector2, float)>(commandQueue);
+            _initialSpeed = speed;
+            _yMin = yMin;
+            _xMax = xMax;
+        }
     }
     
     public void SetInitialPosition(Vector2 initialPosition)
