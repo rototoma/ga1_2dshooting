@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 155925052}
   - component: {fileID: 155925053}
   - component: {fileID: 155925051}
+  - component: {fileID: 155925054}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -226,6 +227,21 @@ MonoBehaviour:
   Speed: 3
   yMin: -4.7
   xMax: 3
+  speedMultiplier: 2
+  replay: 0
+  ReplayInvoker: {fileID: 155925054}
+--- !u!114 &155925054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155925050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b13e59ddd54ac4882b8a4a0f5e8ed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ReplayInvoker
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
