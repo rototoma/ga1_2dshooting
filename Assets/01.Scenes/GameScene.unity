@@ -169,12 +169,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1822851373426229852, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
       propertyPath: m_Name
-      value: EnemyCenter
+      value: EnemyDown
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6866358724518127252, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1822851373426229852, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 456445095}
   m_SourcePrefab: {fileID: 100100000, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
 --- !u!1 &145465478
 GameObject:
@@ -496,6 +500,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 155925052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &328953792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1822851373426229852, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
+  m_PrefabInstance: {fileID: 2034507637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &328953798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328953792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 566f9c58ded2cfb4f9624fd24455f6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyFollowingPlayer
+  playerMove: {fileID: 155925053}
+  initialPlayerPos: {x: 0, y: 0, z: 0}
+  Health: 400
+  MoveSpeed: 1
 --- !u!1001 &358802778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -546,13 +571,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1822851373426229852, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
       propertyPath: m_Name
-      value: EnemyLeft
+      value: EnemyToPlayer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6866358724518127252, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1822851373426229852, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 451528684}
   m_SourcePrefab: {fileID: 100100000, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
+--- !u!1 &451528678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1822851373426229852, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
+  m_PrefabInstance: {fileID: 358802778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &451528684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451528678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b15260ac79f224bada78529efce52d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyToPlayer
+  playerMove: {fileID: 155925053}
+  initialPlayerPos: {x: 0, y: 0, z: 0}
+  Health: 400
+  MoveSpeed: 1
+--- !u!1 &456445089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1822851373426229852, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
+  m_PrefabInstance: {fileID: 6227863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &456445095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456445089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e24efffdaf07f4a952578bde33ca55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDown
+  playerMove: {fileID: 155925053}
+  initialPlayerPos: {x: 0, y: 0, z: 0}
+  Health: 400
+  MoveSpeed: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,12 +926,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1822851373426229852, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
       propertyPath: m_Name
-      value: EnemyRight
+      value: EnemyFollowingPlayer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6866358724518127252, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1822851373426229852, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 328953798}
   m_SourcePrefab: {fileID: 100100000, guid: fd5d70bc718081449a559cc8d1149dec, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
