@@ -2,12 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     public PlayerMove playerMove;
     protected Vector3 initialPlayerPos;
-    public float Health = 400;
-    public float MoveSpeed = 0f;
+    [SerializeField] private float _health = 400;
+    [SerializeField] protected float MoveSpeed = 1f;
 
     private void Start()
     {
@@ -21,14 +21,12 @@ public class Enemy : MonoBehaviour
 
     public void Hit(float damage)
     {
-        Health -= damage;
-        if (Health <= 0)
+        _health -= damage;
+        if (_health <= 0)
         {
             Destroy(gameObject);
         }
     }
 
-    public virtual void Move()
-    {
-    }
+    public abstract void Move();
 }

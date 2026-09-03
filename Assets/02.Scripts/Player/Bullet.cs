@@ -13,14 +13,14 @@ public class Bullet : MonoBehaviour
     // 충돌 관련 이벤트 (Enter -> Stay -> Exit)
 
     // 충돌이 시작되면 호출되는 이벤트 함수
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("꿍");
 
         // 충돌 대상이 Enemy인 경우
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.Hit(Damage);
         }
 
