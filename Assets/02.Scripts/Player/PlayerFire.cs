@@ -51,10 +51,8 @@ public class PlayerFire : MonoBehaviour
     private void FireSubBullet()
     {
         GameObject subBulletLeft = Instantiate(SubBulletPrefab, transform.position, transform.rotation);
-        subBulletLeft.GetComponent<Bullet>().Speed *= 0.5f;
         subBulletLeft.transform.position = SubFirePointLeft.position;
         GameObject subBulletRight = Instantiate(SubBulletPrefab, transform.position, transform.rotation);
-        subBulletRight.GetComponent<Bullet>().Speed *= 0.5f;
         subBulletRight.transform.position = SubFirePointRight.position;
         _coolDown = coolDownAmount;
     }
