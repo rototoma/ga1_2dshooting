@@ -6,11 +6,13 @@ public class PlayerFire : MonoBehaviour
     // 필요 속성
     // - 총알 프리팹
     public GameObject BulletPrefab;
+
     public GameObject SubBulletPrefab;
+
     // - 생성 위치 (총구)
     public Transform FirePointLeft;
     public Transform FirePointRight;
-    
+
     public Transform SubFirePointLeft;
     public Transform SubFirePointRight;
 
@@ -18,14 +20,14 @@ public class PlayerFire : MonoBehaviour
     private float _coolDown;
 
     public bool toggleAutoAttack = false;
-    
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             toggleAutoAttack = !toggleAutoAttack;
         }
-        
+
         if (_coolDown > 0f)
         {
             _coolDown -= Time.deltaTime;
@@ -45,6 +47,7 @@ public class PlayerFire : MonoBehaviour
         bulletRight.transform.position = FirePointRight.position;
         _coolDown = coolDownAmount;
     }
+
     private void FireSubBullet()
     {
         GameObject subBulletLeft = Instantiate(SubBulletPrefab, transform.position, transform.rotation);

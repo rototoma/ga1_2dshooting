@@ -3,30 +3,30 @@ using UnityEngine;
 public class PlayerMoveSample : MonoBehaviour
 {
     // 목적: 키보드 입력에 따라서 플레이어 이동 처리를 하고 싶다.
- 
+
     // 필요 필드:
     public float Speed;
-    
+
     // 매 프레임마다 실행된다.
     // 초당 프레임 실행 횟수는: 별다른 설정이 없을 경우 가능한 많이
     private void Update()
     {
         // 1. 키보드 입력을 받는다.
-        float h = Input.GetAxis("Horizontal");  // 키보드 왼.오른쪽 입력 상태에 따라 -1f~0~1f
-        float v = Input.GetAxis("Vertical");    // 키보드 위.아래 입력 상태에 따라 -1f~0~1f
-        
+        float h = Input.GetAxis("Horizontal"); // 키보드 왼.오른쪽 입력 상태에 따라 -1f~0~1f
+        float v = Input.GetAxis("Vertical"); // 키보드 위.아래 입력 상태에 따라 -1f~0~1f
+
         // float h = Input.GetAxisRaw("Horizontal");  // 키보드 왼.오른쪽 입력 상태에 따라 -1 0 1
         // float v = Input.GetAxisRaw("Vertical");    // 키보드 위.아래 입력 상태에 따라 -1 0 1
-        
+
         Vector2 direction = new Vector2(h, v);
 
         Vector2 normalizedSpeed = (direction * Speed).normalized;
-        
+
         // 3. 방향과 속도에 따라 이동한다.
         transform.Translate(direction * Speed * Time.deltaTime);
         // == transform.position = transform.position + (Vector3)direction * Speed * Time.deltaTime;
         // 새로운 위치 = 현재 위치 + 속도*시간
-       
+
 
         // // 1. 키보드 입력을 받는다.
         // if (Input.GetKey(KeyCode.LeftArrow))
