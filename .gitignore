@@ -6,6 +6,10 @@
 # rider cache
 .idea
 
+# Gemini CLI
+.gemini/
+gha-creds-*.json
+
 .utmp/
 /[Ll]ibrary/
 /[Tt]emp/
