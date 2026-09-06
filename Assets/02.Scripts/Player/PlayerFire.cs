@@ -1,60 +1,59 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerFire : MonoBehaviour
 {
-    // 목표: 스페이스바를 누를 때 마다 총알을 생성해서 발사
+    // 목표: 스페이스바를 누를 때마다 총알을 생성해서 발사하고 싶다.
     // 필요 속성
     // - 총알 프리팹
     public GameObject BulletPrefab;
 
-    public GameObject SubBulletPrefab;
+    // - 생성 위치(총구)
+    public Transform LeftFirePoint;
+    public Transform RightFirePoint;
 
-    // - 생성 위치 (총구)
-    public Transform FirePointLeft;
-    public Transform FirePointRight;
+    // - 쿨타이머
+    public float CoolTime = 0.5f;
+    public float CoolTimer = 0;
 
-    public Transform SubFirePointLeft;
-    public Transform SubFirePointRight;
+    // - 오토 모드
+    public bool AutoFireMode = false;
 
-    public float coolDownAmount;
-    private float _coolDown;
+    private void Start()
+    {
+        CoolTimer = CoolTime;
+    }
 
-    public bool toggleAutoAttack = false;
 
     private void Update()
     {
+        // 오토 공격 모드 토글
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            toggleAutoAttack = !toggleAutoAttack;
+            AutoFireMode = !AutoFireMode;
         }
 
-        if (_coolDown > 0f)
+        // 0. 쿨타이머 감소
+        CoolTimer -= Time.deltaTime;
+
+        // 1. 쿨타이머가 0초 이하이고 && (스페이스바를 누르거나 || 오토 모드라면)
+        if (CoolTimer <= 0 && (Input.GetKeyDown(KeyCode.Space) || AutoFireMode))
         {
-            _coolDown -= Time.deltaTime;
-        }
-        else if (toggleAutoAttack || Input.GetKeyDown(KeyCode.Space))
-        {
+            // 2. 발사
             Fire();
-            FireSubBullet();
+
+            // 3. 쿨타이머 초기화
+            CoolTimer = CoolTime;
         }
     }
 
     private void Fire()
     {
-        GameObject bulletLeft = Instantiate(BulletPrefab, transform.position, transform.rotation);
-        bulletLeft.transform.position = FirePointLeft.position;
-        GameObject bulletRight = Instantiate(BulletPrefab, transform.position, transform.rotation);
-        bulletRight.transform.position = FirePointRight.position;
-        _coolDown = coolDownAmount;
-    }
+        // 2. 총알 프리팹을 생성한다.
+        // Instantiate는 프리팹을 복사해서 (Monobehaviour를 상속받는)게임 오브젝트를 생성하고 씬에 넣어주는 기능
+        GameObject leftBullet = Instantiate(BulletPrefab);
+        leftBullet.transform.position = LeftFirePoint.position; // 생성한 총알의 위치를 총구의 위치로
 
-    private void FireSubBullet()
-    {
-        GameObject subBulletLeft = Instantiate(SubBulletPrefab, transform.position, transform.rotation);
-        subBulletLeft.transform.position = SubFirePointLeft.position;
-        GameObject subBulletRight = Instantiate(SubBulletPrefab, transform.position, transform.rotation);
-        subBulletRight.transform.position = SubFirePointRight.position;
-        _coolDown = coolDownAmount;
+        GameObject rightBullet = Instantiate(BulletPrefab);
+        rightBullet.transform.position = RightFirePoint.position; // 생성한 총알의 위치를 총구의 위치로
     }
 }

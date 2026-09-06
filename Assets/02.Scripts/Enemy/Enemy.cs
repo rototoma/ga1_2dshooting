@@ -11,6 +11,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void Start()
     {
+        playerMove = GameObject.Find("Player").GetComponent<PlayerMove>();
         initialPlayerPos = playerMove.transform.position;
     }
 
