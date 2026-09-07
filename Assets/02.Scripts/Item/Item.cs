@@ -43,6 +43,24 @@ public class Item : MonoBehaviour
             return;
         }
 
+        switch (Type)
+        {
+            case ItemType.Heal:
+                {
+                    player.Heal((int)Value);
+                    break;
+                }
+            case ItemType.FireRateUp:
+                {
+                    player.GetComponent<PlayerFire>().FireUp(Value);
+                    break;
+                }
+            case ItemType.MoveSpeedUp:
+                {
+                    player.GetComponent<PlayerMove>().SpeedUp(Value);
+                    break;
+                }
+        }
 
         Destroy(gameObject);
     }
