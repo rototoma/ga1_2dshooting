@@ -14,11 +14,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void Heal(int healAmount)
     {
-        GameObject obj = other.gameObject;
-        //obj.GetComponent<Player>().TakeDamage(Damage);
-        TakeDamage(obj.GetComponent<Enemy>().Damage);
-        Destroy(obj);
+        _health += healAmount;
     }
 }

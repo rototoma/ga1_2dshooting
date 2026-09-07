@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     // 필요 필드:
-    public float Speed;
+    [SerializeField] private float Speed;
     public float yMin;
     public float xMax;
     public float speedMultiplier;
@@ -48,6 +48,11 @@ public class PlayerMove : MonoBehaviour
         {
             Speed /= speedMultiplier;
         }
+    }
+
+    public void SpeedUp(float upValue)
+    {
+        Speed += upValue;
     }
 
     public void Move()

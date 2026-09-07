@@ -30,5 +30,13 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Player")) return;
+        PlayerObj = other.gameObject.GetComponent<Player>();
+        PlayerObj.TakeDamage(Damage);
+        Destroy(gameObject);
+    }
+
     public abstract void Move();
 }

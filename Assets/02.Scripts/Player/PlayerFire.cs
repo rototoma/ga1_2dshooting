@@ -56,4 +56,9 @@ public class PlayerFire : MonoBehaviour
         GameObject rightBullet = Instantiate(BulletPrefab);
         rightBullet.transform.position = RightFirePoint.position; // 생성한 총알의 위치를 총구의 위치로
     }
+
+    public void FireUp(float Value)
+    {
+        CoolTime -= Value;
+    }
 }
