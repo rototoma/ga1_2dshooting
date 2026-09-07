@@ -88,7 +88,13 @@ public class PlayerMove : MonoBehaviour
             transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
         }
 
-        _animator.SetInteger("x", (int)direction.x);
+        int forX = h > 0 ? 1 : 0;
+        if (h < 0)
+        {
+            forX = -1;
+        }
+
+        _animator.SetInteger("x", (int)forX);
 
         // 3. 방향과 속도에 따라 이동한다.
         transform.Translate(direction * Speed * Time.deltaTime);
