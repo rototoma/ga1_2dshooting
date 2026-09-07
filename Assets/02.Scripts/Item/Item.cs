@@ -31,4 +31,19 @@ public class Item : MonoBehaviour
         Vector2 direction = new Vector2(playerPos.x - myPos.x, playerPos.y - myPos.y).normalized;
         transform.Translate(direction * MoveSpeed * Time.deltaTime);
     }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("아이템 충돌");
+        if (!other.CompareTag("Player")) return;
+
+        Player player = other.GetComponent<Player>();
+        if (player == null)
+        {
+            return;
+        }
+
+
+        Destroy(gameObject);
+    }
 }
