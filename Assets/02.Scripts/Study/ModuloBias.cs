@@ -11,7 +11,7 @@ public class ModuloBias : MonoBehaviour
             for (int i = 0; i < 100000000; i++)
             {
                 randomInt = UnityEngine.Random.Range(0, 429496730);
-                randomInt = randomInt % 80000000;
+                randomInt = randomInt % 76923076;
                 if (randomInt < 1000000)
                 {
                     dropPercentage++;

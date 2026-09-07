@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     // - 생성할 프리팹들
     [SerializeField] private Enemy[] _enemyPrefabs;
-
+    [SerializeField] private Item[] _itemPrefabs;
     public Player PlayerObj;
 
     private void Update()
@@ -57,6 +57,7 @@ public class EnemySpawner : MonoBehaviour
 
         Enemy enemy = Instantiate(_enemyPrefabs[enemyPrefabIndex]);
         enemy.PlayerObj = PlayerObj.GetComponent<Player>();
+        enemy.ItemPrefab = _itemPrefabs[UnityEngine.Random.Range(0, 3)];
         enemy.transform.position = transform.position;
     }
 }

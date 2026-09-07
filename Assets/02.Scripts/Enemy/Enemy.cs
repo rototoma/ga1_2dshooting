@@ -9,6 +9,9 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private float _health = 400;
     [SerializeField] protected float MoveSpeed = 1f;
 
+
+    public Item ItemPrefab;
+
     public int Damage = 40;
 
     private void Start()
@@ -26,6 +29,27 @@ public abstract class Enemy : MonoBehaviour
         _health -= damage;
         if (_health <= 0)
         {
+            int itemPrefabIndex = 0;
+            int radomPercent = UnityEngine.Random.Range(0, 100);
+
+            // Todo: Scriptable Object를 사용해서 리팩토링
+            // 이유 1: 배열을 사용했지만 각 아이템이 어떤 프리팹인지 알수가 없음
+            // 이유 2: 각 에너미 스폰 확률을 매직 넘버로 하드코딩해서 유지보수가 어렵
+            if (radomPercent < 33)
+            {
+                itemPrefabIndex = 0;
+            }
+            else if (radomPercent < 66)
+            {
+                itemPrefabIndex = 1;
+            }
+            else
+            {
+                itemPrefabIndex = 2;
+            }
+            Item item = Instantiate(ItemPrefab);
+            item.transform.position = transform.position;
+            item.PlayerObj = PlayerObj;
             Destroy(gameObject);
         }
     }

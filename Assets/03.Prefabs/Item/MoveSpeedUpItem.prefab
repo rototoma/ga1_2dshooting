@@ -109,9 +109,7 @@ MonoBehaviour:
   Type: 1
   Value: 1
   PlayerObj: {fileID: 0}
-  CoolTime: 2
-  CoolTimer: 0
-  MoveSpeed: 1
+  MoveSpeed: 4
 --- !u!70 &7148752967909285095
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

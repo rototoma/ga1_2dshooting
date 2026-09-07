@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 155925056}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -796,6 +796,10 @@ MonoBehaviour:
   - {fileID: 4687867802047792914, guid: 59af46e6e26f20e4aa81fcd1b55281b4, type: 3}
   - {fileID: 6813226135816662824, guid: eed47076696c2cc49bffe739abc51ad0, type: 3}
   - {fileID: 3990930079738721280, guid: cd81d82f90f144348977a5f57ae19071, type: 3}
+  _itemPrefabs:
+  - {fileID: 7499406068150522614, guid: ea5ccebe09cfa2944afc7da3f744b4db, type: 3}
+  - {fileID: 3701253438859415659, guid: 6bc110b8c8fdc364e9766fbdda06585d, type: 3}
+  - {fileID: 8939449584711062524, guid: 5bd6e8752e41bf24886e4f218c56c926, type: 3}
   PlayerObj: {fileID: 155925058}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

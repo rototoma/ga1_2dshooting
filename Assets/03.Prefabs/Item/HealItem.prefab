@@ -106,12 +106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ca9b1c4c9a9ca44a220fed7d45e5c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  Type: heal
+  Type: 0
   Value: 50
   PlayerObj: {fileID: 0}
-  CoolTime: 2
-  CoolTimer: 0
-  MoveSpeed: 1
+  MoveSpeed: 4
 --- !u!70 &4956053339621490484
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
