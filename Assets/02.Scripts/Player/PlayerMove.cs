@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     // 필요 필드:
+    private Animator _animator;
     [SerializeField] private float Speed;
     public float yMin;
     public float xMax;
@@ -15,7 +17,12 @@ public class PlayerMove : MonoBehaviour
 
     public ReplayInvoker ReplayInvoker = new ReplayInvoker();
 
-    public void Start()
+    private void Awake()
+    {
+        _animator = gameObject.GetComponent<Animator>();
+    }
+
+    private void Start()
     {
         ReplayInvoker.SetInitialPosition(transform.position);
     }
@@ -81,6 +88,7 @@ public class PlayerMove : MonoBehaviour
             transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
         }
 
+        _animator.SetInteger("x", (int)direction.x);
 
         // 3. 방향과 속도에 따라 이동한다.
         transform.Translate(direction * Speed * Time.deltaTime);
