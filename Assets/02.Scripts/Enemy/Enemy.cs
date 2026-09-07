@@ -4,15 +4,14 @@ using UnityEngine.Analytics;
 
 public abstract class Enemy : MonoBehaviour
 {
-    public PlayerMove playerMove;
+    public Player PlayerObj;
     protected Vector3 initialPlayerPos;
     [SerializeField] private float _health = 400;
     [SerializeField] protected float MoveSpeed = 1f;
 
     private void Start()
     {
-        playerMove = GameObject.Find("Player").GetComponent<PlayerMove>();
-        initialPlayerPos = playerMove.transform.position;
+        initialPlayerPos = PlayerObj.transform.position;
     }
 
     private void Update()

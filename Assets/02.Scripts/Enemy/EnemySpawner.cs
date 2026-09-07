@@ -12,6 +12,8 @@ public class EnemySpawner : MonoBehaviour
     // - 생성할 프리팹들
     [SerializeField] private Enemy[] _enemyPrefabs;
 
+    public Player PlayerObj;
+
     private void Update()
     {
         _timer += Time.deltaTime;
@@ -54,6 +56,7 @@ public class EnemySpawner : MonoBehaviour
 
 
         Enemy enemy = Instantiate(_enemyPrefabs[enemyPrefabIndex]);
+        enemy.PlayerObj = PlayerObj.GetComponent<Player>();
         enemy.transform.position = transform.position;
     }
 }
