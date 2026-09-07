@@ -8,11 +8,16 @@ public abstract class Enemy : MonoBehaviour
     protected Vector3 initialPlayerPos;
     [SerializeField] private float _health = 400;
     [SerializeField] protected float MoveSpeed = 1f;
-
+    private Animator _animator;
 
     public Item ItemPrefab;
 
     public int Damage = 40;
+
+    private void Awake()
+    {
+        _animator = gameObject.GetComponent<Animator>();
+    }
 
     private void Start()
     {
@@ -26,6 +31,7 @@ public abstract class Enemy : MonoBehaviour
 
     public void Hit(float damage)
     {
+        _animator.SetTrigger("Hit");
         _health -= damage;
         if (_health <= 0)
         {
@@ -47,6 +53,7 @@ public abstract class Enemy : MonoBehaviour
             {
                 itemPrefabIndex = 2;
             }
+
             Item item = Instantiate(ItemPrefab);
             item.transform.position = transform.position;
             item.PlayerObj = PlayerObj;

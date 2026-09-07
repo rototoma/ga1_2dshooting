@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 325853578273070064}
   - component: {fileID: 8930444336432267420}
   - component: {fileID: 6813226135816662824}
+  - component: {fileID: 3982834129295622782}
   m_Layer: 8
   m_Name: EnemyToPlayer
   m_TagString: Enemy
@@ -84,8 +85,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.55897856, a: 1}
+  m_Sprite: {fileID: -1147401495359466748, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -179,6 +180,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b15260ac79f224bada78529efce52d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyToPlayer
-  playerMove: {fileID: 0}
+  PlayerObj: {fileID: 0}
   _health: 400
   MoveSpeed: 1
+  ItemPrefab: {fileID: 0}
+  Damage: 40
+--- !u!95 &3982834129295622782
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3136567422880693623}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 92673493948e30940acbfe8475a4b7b9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
