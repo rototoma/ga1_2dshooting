@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -11,5 +12,13 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        GameObject obj = other.gameObject;
+        //obj.GetComponent<Player>().TakeDamage(Damage);
+        TakeDamage(obj.GetComponent<Enemy>().Damage);
+        Destroy(obj);
     }
 }

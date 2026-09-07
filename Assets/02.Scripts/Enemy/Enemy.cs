@@ -9,6 +9,8 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private float _health = 400;
     [SerializeField] protected float MoveSpeed = 1f;
 
+    public int Damage = 40;
+
     private void Start()
     {
         initialPlayerPos = PlayerObj.transform.position;

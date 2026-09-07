@@ -179,6 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566f9c58ded2cfb4f9624fd24455f6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyFollowingPlayer
-  playerMove: {fileID: 0}
+  PlayerObj: {fileID: 0}
   _health: 400
   MoveSpeed: 1
