@@ -9,7 +9,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] private float _health = 400;
     public float Health => _health;
     [SerializeField] protected float moveSpeed = 1f;
-    public float MoveSpeed => _health;
+    public float MoveSpeed => moveSpeed;
     private Animator _animator;
 
     public Item ItemPrefab;
