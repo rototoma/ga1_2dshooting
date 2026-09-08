@@ -10,6 +10,8 @@ public class Item : MonoBehaviour
     private const float WaitTime = 2f;
     private float _waitTimer = 0;
 
+    [SerializeField] private GameObject _getEffectPrefab;
+
     private void Update()
     {
         _waitTimer += Time.deltaTime;
@@ -63,6 +65,12 @@ public class Item : MonoBehaviour
                 }
         }
 
+        SpawnGetEffect();
         Destroy(gameObject);
+    }
+
+    public void SpawnGetEffect()
+    {
+        Instantiate(_getEffectPrefab, transform.position, Quaternion.identity);
     }
 }

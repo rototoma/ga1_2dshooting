@@ -111,6 +111,7 @@ MonoBehaviour:
   Value: 0.03
   PlayerObj: {fileID: 0}
   MoveSpeed: 4
+  _getEffectPrefab: {fileID: 8771972552311404799, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}
 --- !u!70 &7564775546375400391
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
