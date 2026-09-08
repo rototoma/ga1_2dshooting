@@ -48,6 +48,7 @@ public class Item : MonoBehaviour
             case ItemType.Heal:
                 {
                     player.Heal((int)Value);
+                    Debug.Log($"플레이어 체력: {player.GetHealth()}");
                     break;
                 }
             case ItemType.FireRateUp:
