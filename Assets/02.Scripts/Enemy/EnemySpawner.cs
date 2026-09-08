@@ -9,6 +9,9 @@ public class EnemySpawner : MonoBehaviour
 
     private float _timer;
 
+    // 생성 위치
+    [SerializeField] private GameObject[] SpawnPoints;
+
     // - 생성할 프리팹들
     [SerializeField] private Enemy[] _enemyPrefabs;
     [SerializeField] private Item[] _itemPrefabs;
@@ -22,7 +25,7 @@ public class EnemySpawner : MonoBehaviour
         {
             _timer = 0;
 
-            _spawnInterval = Random.Range(1f, 3f); // float: 1 ~ 3
+            _spawnInterval = Random.Range(0.3f, 1f); // float: 1 ~ 3
 
             Spawn();
         }
@@ -54,10 +57,16 @@ public class EnemySpawner : MonoBehaviour
             enemyPrefabIndex = 2;
         }
 
-
         Enemy enemy = Instantiate(_enemyPrefabs[enemyPrefabIndex]);
         enemy.PlayerObj = PlayerObj.GetComponent<Player>();
         enemy.ItemPrefab = _itemPrefabs[UnityEngine.Random.Range(0, 3)];
-        enemy.transform.position = transform.position;
+        enemy.transform.position = SpawnPoints[UnityEngine.Random.Range(0, 3)].transform.position;
+        if (enemyPrefabIndex == 1)
+        {
+            enemy.transform.rotation =
+                Quaternion.Euler(0, 0,
+                    180 - Mathf.Atan2(PlayerObj.transform.position.x - enemy.transform.position.x,
+                        PlayerObj.transform.position.y - enemy.transform.position.y) * Mathf.Rad2Deg);
+        }
     }
 }
