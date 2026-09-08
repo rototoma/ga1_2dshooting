@@ -5,10 +5,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int _health = 100;
 
-    public int GetHealth()
-    {
-        return _health;
-    }
+    // getter
+    public int Health => _health;
 
     public void TakeDamage(int damage)
     {

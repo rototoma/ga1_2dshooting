@@ -7,7 +7,9 @@ public class PlayerMove : MonoBehaviour
 {
     // 필요 필드:
     private Animator _animator;
-    [SerializeField] private float Speed;
+    [SerializeField] private float _speed;
+    public float Speed => _speed;
+
     public float yMin;
     public float xMax;
     public float speedMultiplier;
@@ -31,7 +33,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (replay)
         {
-            ReplayInvoker.Replay(_commandQueue, Speed, yMin, xMax);
+            ReplayInvoker.Replay(_commandQueue, _speed, yMin, xMax);
             replay = false;
             _commandQueue.Clear();
         }
@@ -48,18 +50,18 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Speed *= speedMultiplier;
+            _speed *= speedMultiplier;
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Speed /= speedMultiplier;
+            _speed /= speedMultiplier;
         }
     }
 
     public void SpeedUp(float upValue)
     {
-        Speed += upValue;
+        _speed += upValue;
     }
 
     public void Move()
@@ -97,7 +99,7 @@ public class PlayerMove : MonoBehaviour
         _animator.SetInteger("x", (int)forX);
 
         // 3. 방향과 속도에 따라 이동한다.
-        transform.Translate(direction * Speed * Time.deltaTime);
+        transform.Translate(direction * _speed * Time.deltaTime);
         _commandQueue.Enqueue((direction, Time.deltaTime));
     }
 }

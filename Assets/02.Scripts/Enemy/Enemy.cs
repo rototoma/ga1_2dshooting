@@ -7,7 +7,9 @@ public abstract class Enemy : MonoBehaviour
     public Player PlayerObj;
     protected Vector3 initialPlayerPos;
     [SerializeField] private float _health = 400;
-    [SerializeField] protected float MoveSpeed = 1f;
+    public float Health => _health;
+    [SerializeField] protected float moveSpeed = 1f;
+    public float MoveSpeed => _health;
     private Animator _animator;
 
     public Item ItemPrefab;
