@@ -182,9 +182,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyFollowingPlayer
   PlayerObj: {fileID: 0}
   _health: 400
-  MoveSpeed: 1
+  moveSpeed: 1
   ItemPrefab: {fileID: 0}
   Damage: 40
+  _deathEffectPrefab: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
 --- !u!95 &5206530235624234498
 Animator:
   serializedVersion: 7

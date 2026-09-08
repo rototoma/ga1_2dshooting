@@ -182,9 +182,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyToPlayer
   PlayerObj: {fileID: 0}
   _health: 400
-  MoveSpeed: 1
+  moveSpeed: 1
   ItemPrefab: {fileID: 0}
   Damage: 40
+  _deathEffectPrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
 --- !u!95 &3982834129295622782
 Animator:
   serializedVersion: 7

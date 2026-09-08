@@ -16,6 +16,8 @@ public abstract class Enemy : MonoBehaviour
 
     public int Damage = 40;
 
+    [SerializeField] private GameObject _deathEffectPrefab;
+
     private void Awake()
     {
         _animator = gameObject.GetComponent<Animator>();
@@ -37,6 +39,7 @@ public abstract class Enemy : MonoBehaviour
         _health -= damage;
         if (_health <= 0)
         {
+            SpawnDeathEffect();
             int itemPrefabIndex = 0;
             int radomPercent = UnityEngine.Random.Range(0, 100);
 
@@ -61,6 +64,11 @@ public abstract class Enemy : MonoBehaviour
             item.PlayerObj = PlayerObj;
             Destroy(gameObject);
         }
+    }
+
+    public void SpawnDeathEffect()
+    {
+        Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
     }
 
     public void OnTriggerEnter2D(Collider2D other)
