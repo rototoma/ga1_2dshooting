@@ -48,21 +48,21 @@ public class Item : MonoBehaviour
         switch (Type)
         {
             case ItemType.Heal:
-                {
-                    player.Heal((int)Value);
-                    Debug.Log($"플레이어 체력: {player.Health}");
-                    break;
-                }
+            {
+                player.Heal((int)Value);
+                Debug.Log($"플레이어 체력: {player.Health}");
+                break;
+            }
             case ItemType.FireRateUp:
-                {
-                    player.GetComponent<PlayerFire>().FireUp(Value);
-                    break;
-                }
+            {
+                player.GetComponent<PlayerFire>().FireUp(Value);
+                break;
+            }
             case ItemType.MoveSpeedUp:
-                {
-                    player.GetComponent<PlayerMove>().SpeedUp(Value);
-                    break;
-                }
+            {
+                player.GetComponent<PlayerMove>().SpeedUp(Value);
+                break;
+            }
         }
 
         SpawnGetEffect();

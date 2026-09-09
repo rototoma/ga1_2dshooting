@@ -3,14 +3,14 @@ using UnityEngine;
 public class PlayerBomb : MonoBehaviour
 {
     // - 쿨타이머
-    [SerializeField] private float CoolTime = 10f;
+    [SerializeField] private float _coolTime = 10f;
     public float CoolTimer = 0f;
 
     [SerializeField] private GameObject _bombObject;
 
     private void Start()
     {
-        CoolTimer = CoolTime;
+        CoolTimer = _coolTime;
     }
 
     private void Update()
@@ -20,7 +20,7 @@ public class PlayerBomb : MonoBehaviour
         if (CoolTimer <= 0 && Input.GetKeyDown(KeyCode.B))
         {
             Fire();
-            CoolTimer = CoolTime;
+            CoolTimer = _coolTime;
         }
     }
 
