@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class Bullet : MonoBehaviour
 {
     public float Speed = 0f;
@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        _audioSource.pitch = UnityEngine.Random.Range(-1.0f, 1.0f);
+        _audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
         _audioSource.Play();
     }
 
