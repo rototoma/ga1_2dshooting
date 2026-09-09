@@ -5,9 +5,15 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int _health = 100;
     [SerializeField] private GameObject _deathEffectPrefab;
+    [SerializeField] private AudioSource _damagedAudioSource;
 
     // getter
     public int Health => _health;
+
+    private void Awake()
+    {
+        _damagedAudioSource = gameObject.GetComponent<AudioSource>();
+    }
 
     public void TakeDamage(int damage)
     {
@@ -16,6 +22,10 @@ public class Player : MonoBehaviour
         {
             SpawnDeathEffect();
             Destroy(gameObject);
+        }
+        else
+        {
+            _damagedAudioSource.Play();
         }
     }
 
