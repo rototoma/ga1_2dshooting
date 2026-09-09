@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int _health = 100;
     [SerializeField] private GameObject _deathEffectPrefab;
-    [SerializeField] private AudioSource _damagedAudioSource;
+    private AudioSource _damagedAudioSource;
 
     // getter
     public int Health => _health;
@@ -25,7 +25,10 @@ public class Player : MonoBehaviour
         }
         else
         {
-            _damagedAudioSource.Play();
+            if (_damagedAudioSource != null)
+            {
+                _damagedAudioSource.Play();
+            }
         }
     }
 
