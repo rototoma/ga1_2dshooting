@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BackgroundAnim
+  m_Name: BigBackgroundAnim
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -30,7 +30,7 @@ AnimationClip:
       - serializedVersion: 3
         time: 4
         value: {x: 0, y: -10.5, z: 0}
-        inSlope: {x: 0, y: -2.625, z: 0}
+        inSlope: {x: 0, y: -2.8513112, z: 0}
         outSlope: {x: 0, y: -2.8513112, z: 0}
         tangentMode: 0
         weightedMode: 0
@@ -118,9 +118,9 @@ AnimationClip:
       - serializedVersion: 3
         time: 4
         value: -10.5
-        inSlope: -2.625
+        inSlope: -2.8513112
         outSlope: -2.8513112
-        tangentMode: 5
+        tangentMode: 0
         weightedMode: 0
         inWeight: 1
         outWeight: 0.33333334

@@ -18,7 +18,7 @@ TagManager:
   - Bullet
   - Enemy
   - Blocker
-  - 
+  - Background
   - 
   - 
   - 
@@ -43,6 +43,21 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1468018257
+    locked: 0
+  - name: Enemy
+    uniqueID: 1313793057
+    locked: 0
+  - name: Player
+    uniqueID: 4023469811
+    locked: 0
+  - name: Bullet
+    uniqueID: 3600245465
+    locked: 0
+  - name: Item
+    uniqueID: 4041992671
     locked: 0
   m_RenderingLayers:
   - Default
