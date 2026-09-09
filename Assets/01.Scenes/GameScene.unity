@@ -719,7 +719,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   _health: 100
   _deathEffectPrefab: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
-  _damagedAudioSource: {fileID: 0}
 --- !u!95 &155925059
 Animator:
   serializedVersion: 7
