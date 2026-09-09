@@ -18,9 +18,12 @@ public abstract class Enemy : MonoBehaviour
 
     [SerializeField] private GameObject _deathEffectPrefab;
 
+    [SerializeField] private AudioSource _damagedAudioSource;
+
     private void Awake()
     {
         _animator = gameObject.GetComponent<Animator>();
+        _damagedAudioSource = gameObject.GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -45,6 +48,10 @@ public abstract class Enemy : MonoBehaviour
             item.transform.position = transform.position;
             item.PlayerObj = PlayerObj;
             Destroy(gameObject);
+        }
+        else
+        {
+            _damagedAudioSource.Play();
         }
     }
 
