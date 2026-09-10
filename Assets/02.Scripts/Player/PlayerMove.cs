@@ -18,10 +18,12 @@ public class PlayerMove : MonoBehaviour
     private Queue<(Vector2, float)> _commandQueue = new Queue<(Vector2, float)>();
 
     public ReplayInvoker ReplayInvoker = new ReplayInvoker();
+    private PlayerAutoMove _playerAutoMove;
 
     private void Awake()
     {
         _animator = gameObject.GetComponent<Animator>();
+        _playerAutoMove = gameObject.GetComponent<PlayerAutoMove>();
     }
 
     private void Start()
@@ -31,6 +33,8 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (_playerAutoMove.IsAutoMode) return;
+
         if (replay)
         {
             ReplayInvoker.Replay(_commandQueue, _speed, yMin, xMax);
@@ -95,7 +99,7 @@ public class PlayerMove : MonoBehaviour
             destination.y = myPos.y;
         }
 
-        Vector2 direction = new Vector2(destination.x - myPos.x, destination.y - myPos.y).normalized;
+        Vector2 direction = new Vector2(destination.x - myPos.x, destination.y - myPos.y);
         if (transform.position.y < yMin)
         {
             direction.y = yMin + 0.1f;
@@ -118,8 +122,8 @@ public class PlayerMove : MonoBehaviour
             transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
         }
 
-        int forX = direction.x > 0 ? 1 : 0;
-        if (direction.x < 0)
+        int forX = direction.x > 0.1f ? 1 : 0;
+        if (direction.x < -0.1f)
         {
             forX = -1;
         }

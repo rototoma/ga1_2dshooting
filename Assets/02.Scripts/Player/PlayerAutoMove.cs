@@ -32,7 +32,10 @@ public class PlayerAutoMove : MonoBehaviour
         if (_targetEnemy != null)
         {
             _playerFire.AutoFireMode = true;
-            _playerMove.Move(_destination);
+            if (((Vector3)_destination - transform.position).magnitude > 0.3f)
+            {
+                _playerMove.Move(_destination);
+            }
         }
         else
         {
