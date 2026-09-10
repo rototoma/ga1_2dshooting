@@ -12,6 +12,8 @@ public class ScoreManager : MonoBehaviour
     private int _bestScore = 0;
     private int _currentScore = 0;
 
+    private const string SaveKey = "BestScore";
+
     [SerializeField] private TextMeshProUGUI _bestScoreText;
     [SerializeField] private TextMeshProUGUI _currentScoreText;
 
@@ -30,6 +32,7 @@ public class ScoreManager : MonoBehaviour
     {
         _bestScoreText.SetText($"Best Score : {_bestScore}");
         _currentScoreText.SetText($"Current Score : {_currentScore}");
+        _bestScore = PlayerPrefs.GetInt(SaveKey);
     }
 
     public int GetScore()
@@ -44,7 +47,16 @@ public class ScoreManager : MonoBehaviour
         if (_currentScore > _bestScore)
         {
             _bestScore = _currentScore;
-            _bestScoreText.SetText($"Best Score : {_bestScore}");
+            PlayerPrefs.SetInt(SaveKey, _bestScore);
+            PlayerPrefs.Save();
         }
+
+        Refresh();
+    }
+
+    public void Refresh()
+    {
+        _currentScoreText.SetText($"Current Score : {_currentScore}");
+        _bestScoreText.SetText($"Best Score : {_bestScore}");
     }
 }
