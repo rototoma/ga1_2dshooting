@@ -102,4 +102,39 @@ public class PlayerMove : MonoBehaviour
         transform.Translate(direction * _speed * Time.deltaTime);
         _commandQueue.Enqueue((direction, Time.deltaTime));
     }
+
+    public void Move(Vector2 destination)
+    {
+        Vector3 myPos = transform.position;
+        if (destination.y >= myPos.y)
+        {
+            destination.y = myPos.y;
+        }
+
+        Vector2 direction = new Vector2(destination.x - myPos.x, destination.y - myPos.y).normalized;
+        if (transform.position.y < yMin)
+        {
+            direction.y = yMin + 0.1f;
+        }
+
+        if (transform.position.x < -xMax && direction.x <= 0)
+        {
+            transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
+        }
+
+        if (transform.position.x > xMax && direction.x >= 0)
+        {
+            transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
+        }
+
+        int forX = direction.x > 0 ? 1 : 0;
+        if (direction.x < 0)
+        {
+            forX = -1;
+        }
+
+        _animator.SetInteger("x", (int)forX);
+
+        transform.Translate(direction * _speed * Time.deltaTime);
+    }
 }

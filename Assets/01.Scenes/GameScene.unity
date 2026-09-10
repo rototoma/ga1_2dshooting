@@ -490,6 +490,7 @@ GameObject:
   - component: {fileID: 155925054}
   - component: {fileID: 155925055}
   - component: {fileID: 155925061}
+  - component: {fileID: 155925063}
   - component: {fileID: 155925057}
   - component: {fileID: 155925056}
   - component: {fileID: 155925059}
@@ -570,7 +571,7 @@ Transform:
   m_GameObject: {fileID: 155925050}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.77, z: 0}
+  m_LocalPosition: {x: 0, y: -3.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -594,7 +595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
   _speed: 2
   yMin: -4.7
-  xMax: 1.8
+  xMax: 2
   speedMultiplier: 2
   replay: 0
   ReplayInvoker: {fileID: 155925054}
@@ -972,6 +973,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &155925063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155925050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98c3f7ba463c65f48ba49a98c8ed2472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAutoMove
+  _moveLimit: 2
+  _playerSize: 1
+  IsAutoMode: 0
 --- !u!1 &171306251
 GameObject:
   m_ObjectHideFlags: 0

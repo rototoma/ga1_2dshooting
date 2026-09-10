@@ -59,6 +59,9 @@ public class PlayerFire : MonoBehaviour
 
     public void FireUp(float Value)
     {
-        CoolTime -= Value;
+        if (CoolTime > 0.07f)
+        {
+            CoolTime -= Value;
+        }
     }
 }
