@@ -48,8 +48,8 @@ public abstract class Enemy : MonoBehaviour
             item.transform.position = transform.position;
             item.PlayerObj = PlayerObj;
 
-            ScoreManager scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
-            scoreManager.AddScore(10);
+            // 싱글톤 - 인스턴스화
+            ScoreManager.Instance.AddScore(10);
             Destroy(gameObject);
         }
         else

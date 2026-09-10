@@ -80,23 +80,7 @@ public class PlayerMove : MonoBehaviour
             direction.y = 0;
         }
 
-        if (transform.position.x < -xMax && direction.x <= 0)
-        {
-            transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
-        }
-
-        if (transform.position.x > xMax && direction.x >= 0)
-        {
-            transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
-        }
-
-        int forX = h > 0 ? 1 : 0;
-        if (h < 0)
-        {
-            forX = -1;
-        }
-
-        _animator.SetInteger("x", (int)forX);
+        _animator.SetInteger("x", CheckBorder(direction));
 
         // 3. 방향과 속도에 따라 이동한다.
         transform.Translate(direction * _speed * Time.deltaTime);
@@ -117,6 +101,13 @@ public class PlayerMove : MonoBehaviour
             direction.y = yMin + 0.1f;
         }
 
+        _animator.SetInteger("x", CheckBorder(direction));
+
+        transform.Translate(direction * _speed * Time.deltaTime);
+    }
+
+    public int CheckBorder(Vector2 direction)
+    {
         if (transform.position.x < -xMax && direction.x <= 0)
         {
             transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
@@ -133,8 +124,6 @@ public class PlayerMove : MonoBehaviour
             forX = -1;
         }
 
-        _animator.SetInteger("x", (int)forX);
-
-        transform.Translate(direction * _speed * Time.deltaTime);
+        return forX;
     }
 }
