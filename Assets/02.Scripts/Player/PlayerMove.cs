@@ -80,7 +80,7 @@ public class PlayerMove : MonoBehaviour
             direction.y = 0;
         }
 
-        _animator.SetInteger("x", CheckBorder(direction));
+        _animator.SetInteger("x", ApplyBorderConstraint(direction));
 
         // 3. 방향과 속도에 따라 이동한다.
         transform.Translate(direction * _speed * Time.deltaTime);
@@ -101,12 +101,12 @@ public class PlayerMove : MonoBehaviour
             direction.y = yMin + 0.1f;
         }
 
-        _animator.SetInteger("x", CheckBorder(direction));
+        _animator.SetInteger("x", ApplyBorderConstraint(direction));
 
         transform.Translate(direction * _speed * Time.deltaTime);
     }
 
-    public int CheckBorder(Vector2 direction)
+    public int ApplyBorderConstraint(Vector2 direction)
     {
         if (transform.position.x < -xMax && direction.x <= 0)
         {
