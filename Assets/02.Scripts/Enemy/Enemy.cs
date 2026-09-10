@@ -47,6 +47,9 @@ public abstract class Enemy : MonoBehaviour
             Item item = Instantiate(ItemPrefab);
             item.transform.position = transform.position;
             item.PlayerObj = PlayerObj;
+
+            ScoreManager scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
+            scoreManager.AddScore(10);
             Destroy(gameObject);
         }
         else
