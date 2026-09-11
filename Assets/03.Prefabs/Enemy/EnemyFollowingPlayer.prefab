@@ -184,7 +184,7 @@ MonoBehaviour:
   PlayerObj: {fileID: 0}
   _health: 400
   moveSpeed: 1
-  ItemPrefab: {fileID: 0}
+  Type: 2
   Damage: 40
   _deathEffectPrefab: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
   _damagedAudioSource: {fileID: 0}

@@ -41,7 +41,6 @@ public class EnemySpawner : MonoBehaviour
         // 30%: [1] Aimed
         // 20%: [2] Homing
 
-        int enemyPrefabIndex = 0;
         int totalWeight = 0;
         foreach (var data in _spawnData.Data)
         {
@@ -52,12 +51,12 @@ public class EnemySpawner : MonoBehaviour
 
 
         int cumulativeWeight = 0;
-        foreach (var data in _spawnData.Data)
+        for (int i = 0; i < _spawnData.Data.Length; i++)
         {
-            cumulativeWeight += data.Weight;
+            cumulativeWeight += _spawnData.Data[i].Weight;
             if (radomWeight < cumulativeWeight)
             {
-                Enemy enemy = Instantiate(data.Enemy);
+                Enemy enemy = EnemyPool.Instance.CreateEnemy((int)_spawnData.Data[i].Enemy.Type);
                 enemy.PlayerObj = PlayerObj.GetComponent<Player>();
                 enemy.transform.position = _spawnPoints[UnityEngine.Random.Range(0, 3)].transform.position;
                 return;

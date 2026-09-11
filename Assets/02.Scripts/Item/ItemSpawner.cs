@@ -23,12 +23,12 @@ public class ItemSpawner : MonoBehaviour
         int radomWeight = UnityEngine.Random.Range(0, totalWeight);
 
         int cumulativeWeight = 0;
-        foreach (var data in _spawnData.Data)
+        for (int i = 0; i < _spawnData.Data.Length; i++)
         {
-            cumulativeWeight += data.Weight;
+            cumulativeWeight += _spawnData.Data[i].Weight;
             if (radomWeight < cumulativeWeight)
             {
-                Item item = Instantiate(data.Item);
+                Item item = ItemPool.Instance.CreateItem(i);
 
                 item.transform.position = position;
                 item.PlayerObj = _playerObj;

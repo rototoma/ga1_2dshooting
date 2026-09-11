@@ -25,7 +25,7 @@ public class Item : MonoBehaviour
     {
         if (PlayerObj == null)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         Vector3 myPos = transform.position;
@@ -66,7 +66,7 @@ public class Item : MonoBehaviour
         }
 
         SpawnGetEffect();
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void SpawnGetEffect()

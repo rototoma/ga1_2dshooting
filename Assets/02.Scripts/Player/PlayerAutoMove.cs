@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerFire))]
@@ -13,10 +14,22 @@ public class PlayerAutoMove : MonoBehaviour
     private Vector2 _destination;
     public bool IsAutoMode = false;
 
+    public Transform enemyPool;
+    private GameObject[] _enemyList;
+
     private void Awake()
     {
         _playerFire = GetComponent<PlayerFire>();
         _playerMove = GetComponent<PlayerMove>();
+    }
+
+    private void Start()
+    {
+        enemyList = new GameObject[enemyPool.childCount];
+        for (int i = 0; i < enemyPool.childCount; i++)
+        {
+            enemyList[i] = enemyPool.GetChild(i).gameObject;
+        }
     }
 
     private void Update()
@@ -28,18 +41,18 @@ public class PlayerAutoMove : MonoBehaviour
         }
 
         if (!IsAutoMode) return;
-
-        if (_targetEnemy != null)
+        if (_targetEnemy == null || _targetEnemy.activeSelf == false)
+        {
+            FindTarget();
+        }
+        else
         {
             _playerFire.AutoFireMode = true;
+            GetDestination();
             if (((Vector3)_destination - transform.position).magnitude > 0.3f)
             {
                 _playerMove.Move(_destination);
             }
-        }
-        else
-        {
-            FindTarget();
         }
     }
 
@@ -51,18 +64,20 @@ public class PlayerAutoMove : MonoBehaviour
 
     private void FindTarget()
     {
-        GameObject[] enemyList = GameObject.FindGameObjectsWithTag("Enemy");
         float minDistance = 1000f;
         float temp = 0f;
         foreach (var enemy in enemyList)
         {
-            temp = (enemy.transform.position - transform.position).magnitude;
-            // 너무 가까우면 부딪힐 수 있으니 가지 않는다.
-            if (temp < _moveLimit) continue;
-            if (temp < minDistance)
+            if (enemy.activeSelf)
             {
-                minDistance = temp;
-                _targetEnemy = enemy;
+                temp = (enemy.transform.position - transform.position).magnitude;
+                // 너무 가까우면 부딪힐 수 있으니 가지 않는다.
+                if (temp < _moveLimit) continue;
+                if (temp < minDistance)
+                {
+                    minDistance = temp;
+                    _targetEnemy = enemy;
+                }
             }
         }
 

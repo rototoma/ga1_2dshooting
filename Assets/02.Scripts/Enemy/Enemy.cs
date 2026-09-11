@@ -12,6 +12,7 @@ public abstract class Enemy : MonoBehaviour
     public float MoveSpeed => moveSpeed;
     private Animator _animator;
 
+    public EnemyType Type;
     public int Damage = 40;
 
     [SerializeField] private GameObject _deathEffectPrefab;
@@ -43,7 +44,7 @@ public abstract class Enemy : MonoBehaviour
 
             // 싱글톤 - 인스턴스화
             ScoreManager.Instance.AddScore(10);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         else
         {
@@ -61,7 +62,7 @@ public abstract class Enemy : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         PlayerObj = other.gameObject.GetComponent<Player>();
         PlayerObj.TakeDamage(Damage);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public abstract void Move();
