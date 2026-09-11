@@ -6,6 +6,7 @@ public class EnemyToPlayer : Enemy
 
     private void Start()
     {
+        initialPlayerPos = PlayerObj.transform.position;
         _direction = initialPlayerPos - transform.position;
 
         float dx = _direction.x; // 플레이어와 에너미 사이의 밑변 길이

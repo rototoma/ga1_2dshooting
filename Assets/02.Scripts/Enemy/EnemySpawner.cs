@@ -60,14 +60,6 @@ public class EnemySpawner : MonoBehaviour
                 Enemy enemy = Instantiate(data.Enemy);
                 enemy.PlayerObj = PlayerObj.GetComponent<Player>();
                 enemy.transform.position = _spawnPoints[UnityEngine.Random.Range(0, 3)].transform.position;
-                if (enemyPrefabIndex == 1)
-                {
-                    enemy.transform.rotation =
-                        Quaternion.Euler(0, 0,
-                            180 - Mathf.Atan2(PlayerObj.transform.position.x - enemy.transform.position.x,
-                                PlayerObj.transform.position.y - enemy.transform.position.y) * Mathf.Rad2Deg);
-                }
-
                 return;
             }
         }

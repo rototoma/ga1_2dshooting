@@ -26,11 +26,6 @@ public abstract class Enemy : MonoBehaviour
         _itemSpawner = GameObject.FindGameObjectWithTag("ItemSpawner").GetComponent<ItemSpawner>();
     }
 
-    private void Start()
-    {
-        initialPlayerPos = PlayerObj.transform.position;
-    }
-
     private void Update()
     {
         Move();
