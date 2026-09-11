@@ -25,10 +25,10 @@ public class PlayerAutoMove : MonoBehaviour
 
     private void Start()
     {
-        enemyList = new GameObject[enemyPool.childCount];
+        _enemyList = new GameObject[enemyPool.childCount];
         for (int i = 0; i < enemyPool.childCount; i++)
         {
-            enemyList[i] = enemyPool.GetChild(i).gameObject;
+            _enemyList[i] = enemyPool.GetChild(i).gameObject;
         }
     }
 
@@ -66,7 +66,7 @@ public class PlayerAutoMove : MonoBehaviour
     {
         float minDistance = 1000f;
         float temp = 0f;
-        foreach (var enemy in enemyList)
+        foreach (var enemy in _enemyList)
         {
             if (enemy.activeSelf)
             {
