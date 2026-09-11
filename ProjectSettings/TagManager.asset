@@ -9,6 +9,7 @@ TagManager:
   - FxTemporaire
   - ScoreManager
   - ItemSpawner
+  - Bullet
   layers:
   - Default
   - TransparentFX

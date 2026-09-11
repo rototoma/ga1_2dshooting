@@ -36,7 +36,7 @@ public class Item : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("아이템 충돌");
+        // Debug.Log("아이템 충돌");
         if (!other.CompareTag("Player")) return;
 
         Player player = other.GetComponent<Player>();

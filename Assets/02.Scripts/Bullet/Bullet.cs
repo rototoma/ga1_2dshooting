@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -6,8 +7,14 @@ public class Bullet : MonoBehaviour
     public float Speed = 0f;
     public float Damage = 100f;
     private AudioSource _audioSource;
+    public BulletType _bulletType;
 
-    private void Awake()
+    public void OnSpawn()
+    {
+        PlaySound();
+    }
+
+    private void PlaySound()
     {
         _audioSource = GetComponent<AudioSource>();
         _audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
@@ -32,7 +39,7 @@ public class Bullet : MonoBehaviour
             enemy.Hit(Damage);
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
