@@ -8,6 +8,7 @@ TagManager:
   - Item
   - FxTemporaire
   - ScoreManager
+  - ItemSpawner
   layers:
   - Default
   - TransparentFX

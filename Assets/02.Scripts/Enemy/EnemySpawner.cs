@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 // 역할: 일정 시간마다 적을 생성해주고 싶다.
 public class EnemySpawner : MonoBehaviour
@@ -6,16 +8,17 @@ public class EnemySpawner : MonoBehaviour
     // 필요 속성
     // - 타이머
     [SerializeField] private float _spawnInterval = 3f;
-
+    [SerializeField] EnemySpawnDataTableSO _spawnData;
     private float _timer;
 
     // 생성 위치
     [SerializeField] private GameObject[] _spawnPoints;
 
-    // - 생성할 프리팹들
-    [SerializeField] private Enemy[] _enemyPrefabs;
-    [SerializeField] private Item[] _itemPrefabs;
     public Player PlayerObj;
+
+    private void Start()
+    {
+    }
 
     private void Update()
     {
@@ -39,34 +42,34 @@ public class EnemySpawner : MonoBehaviour
         // 20%: [2] Homing
 
         int enemyPrefabIndex = 0;
-        int radomPercent = UnityEngine.Random.Range(0, 100);
-
-        // Todo: Scriptable Object를 사용해서 리팩토링
-        // 이유 1: 배열을 사용했지만 각 아이템이 어떤 프리팹인지 알수가 없음
-        // 이유 2: 각 에너미 스폰 확률을 매직 넘버로 하드코딩해서 유지보수가 어렵
-        if (radomPercent < 50)
+        int totalWeight = 0;
+        foreach (var data in _spawnData.Data)
         {
-            enemyPrefabIndex = 0;
-        }
-        else if (radomPercent < 80)
-        {
-            enemyPrefabIndex = 1;
-        }
-        else
-        {
-            enemyPrefabIndex = 2;
+            totalWeight += data.Weight;
         }
 
-        Enemy enemy = Instantiate(_enemyPrefabs[enemyPrefabIndex]);
-        enemy.PlayerObj = PlayerObj.GetComponent<Player>();
-        enemy.ItemPrefab = _itemPrefabs[UnityEngine.Random.Range(0, 3)];
-        enemy.transform.position = _spawnPoints[UnityEngine.Random.Range(0, 3)].transform.position;
-        if (enemyPrefabIndex == 1)
+        int radomWeight = UnityEngine.Random.Range(0, totalWeight);
+
+
+        int cumulativeWeight = 0;
+        foreach (var data in _spawnData.Data)
         {
-            enemy.transform.rotation =
-                Quaternion.Euler(0, 0,
-                    180 - Mathf.Atan2(PlayerObj.transform.position.x - enemy.transform.position.x,
-                        PlayerObj.transform.position.y - enemy.transform.position.y) * Mathf.Rad2Deg);
+            cumulativeWeight += data.Weight;
+            if (radomWeight < cumulativeWeight)
+            {
+                Enemy enemy = Instantiate(data.Enemy);
+                enemy.PlayerObj = PlayerObj.GetComponent<Player>();
+                enemy.transform.position = _spawnPoints[UnityEngine.Random.Range(0, 3)].transform.position;
+                if (enemyPrefabIndex == 1)
+                {
+                    enemy.transform.rotation =
+                        Quaternion.Euler(0, 0,
+                            180 - Mathf.Atan2(PlayerObj.transform.position.x - enemy.transform.position.x,
+                                PlayerObj.transform.position.y - enemy.transform.position.y) * Mathf.Rad2Deg);
+                }
+
+                return;
+            }
         }
     }
 }

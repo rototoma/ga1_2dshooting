@@ -12,18 +12,18 @@ public abstract class Enemy : MonoBehaviour
     public float MoveSpeed => moveSpeed;
     private Animator _animator;
 
-    public Item ItemPrefab;
-
     public int Damage = 40;
 
     [SerializeField] private GameObject _deathEffectPrefab;
-
     [SerializeField] private AudioSource _damagedAudioSource;
+
+    private ItemSpawner _itemSpawner;
 
     private void Awake()
     {
         _animator = gameObject.GetComponent<Animator>();
         _damagedAudioSource = gameObject.GetComponent<AudioSource>();
+        _itemSpawner = GameObject.FindGameObjectWithTag("ItemSpawner").GetComponent<ItemSpawner>();
     }
 
     private void Start()
@@ -44,9 +44,7 @@ public abstract class Enemy : MonoBehaviour
         {
             SpawnDeathEffect();
 
-            Item item = Instantiate(ItemPrefab);
-            item.transform.position = transform.position;
-            item.PlayerObj = PlayerObj;
+            _itemSpawner.SpawnItem(transform.position);
 
             // 싱글톤 - 인스턴스화
             ScoreManager.Instance.AddScore(10);
