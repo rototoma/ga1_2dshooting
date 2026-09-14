@@ -44,7 +44,8 @@ public class PlayerFire : MonoBehaviour
             Fire();
 
             // 3. 쿨타이머 초기화
-            CoolTimer = CoolTime;
+            float finalCoolTime = CoolTime - UpgradeManager.Instance._upgrades[1].CurrentValue;
+            CoolTimer = finalCoolTime;
         }
     }
 

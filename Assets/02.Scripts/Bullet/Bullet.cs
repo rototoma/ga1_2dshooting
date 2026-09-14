@@ -36,7 +36,9 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            enemy.Hit(Damage);
+
+            float finalDamage = Damage + UpgradeManager.Instance._upgrades[0].CurrentValue;
+            enemy.Hit(finalDamage);
         }
 
         gameObject.SetActive(false);

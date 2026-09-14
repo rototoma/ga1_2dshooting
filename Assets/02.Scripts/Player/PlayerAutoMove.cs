@@ -12,7 +12,7 @@ public class PlayerAutoMove : MonoBehaviour
 
     private GameObject _targetEnemy = null;
     private Vector2 _destination;
-    public bool IsAutoMode = false;
+    private bool _isAutoMode = false;
 
     public Transform enemyPool;
     private GameObject[] _enemyList;
@@ -37,10 +37,10 @@ public class PlayerAutoMove : MonoBehaviour
         // 오토 행동 모드 토글
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            IsAutoMode = !IsAutoMode;
+            SetAutoMode();
         }
 
-        if (!IsAutoMode) return;
+        if (!_isAutoMode) return;
         if (_targetEnemy == null || _targetEnemy.activeSelf == false)
         {
             FindTarget();
@@ -54,6 +54,16 @@ public class PlayerAutoMove : MonoBehaviour
                 _playerMove.Move(_destination);
             }
         }
+    }
+
+    public void SetAutoMode()
+    {
+        _isAutoMode = !_isAutoMode;
+    }
+
+    public bool GetAutoMode()
+    {
+        return _isAutoMode;
     }
 
     private void GetDestination()

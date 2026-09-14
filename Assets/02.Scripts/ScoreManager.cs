@@ -56,7 +56,7 @@ public class ScoreManager : MonoBehaviour
 
     public void Refresh()
     {
-        _currentScoreText.SetText($"Current Score : {_currentScore}");
-        _bestScoreText.SetText($"Best Score : {_bestScore}");
+        _currentScoreText.SetText($"Current Score: {_currentScore:N0}");
+        _bestScoreText.SetText($"Best Score: {_bestScore:N0}");
     }
 }
