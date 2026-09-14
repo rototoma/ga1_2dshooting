@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager Instance => _instance;
     private int _bestScore = 0;
     private int _currentScore = 0;
+    public int Score => _currentScore;
 
     private const string SaveKey = "BestScore";
 
@@ -40,10 +41,16 @@ public class ScoreManager : MonoBehaviour
         return _bestScore;
     }
 
+    public void SpendScore(int value)
+    {
+        _currentScore -= value;
+
+        Refresh();
+    }
+
     public void AddScore(int score)
     {
         _currentScore += score;
-        _currentScoreText.SetText($"Current Score : {_currentScore}");
         if (_currentScore > _bestScore)
         {
             _bestScore = _currentScore;
