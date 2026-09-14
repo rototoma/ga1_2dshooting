@@ -17,6 +17,12 @@ public class CustomButton : Button
     {
         base.OnPointerClick(eventData);
         _clickSound.Play();
+
+        if (_buttonImage == null)
+        {
+            Debug.LogError($"Button {name} has no button image");
+        }
+
         if (_onSprite != null)
         {
             _buttonImage.sprite = _isInitialOn ? _offSprite : _onSprite;

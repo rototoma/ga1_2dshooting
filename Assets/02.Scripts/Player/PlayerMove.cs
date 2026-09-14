@@ -86,7 +86,7 @@ public class PlayerMove : MonoBehaviour
 
         _animator.SetInteger("x", ApplyBorderConstraint(direction));
 
-        float finalSpeed = _speed += UpgradeManager.Instance._upgrades[2].CurrentValue;
+        float finalSpeed = _speed + UpgradeManager.Instance._upgrades[2].CurrentValue;
         // 3. 방향과 속도에 따라 이동한다.
         transform.Translate(direction * finalSpeed * Time.deltaTime);
         _commandQueue.Enqueue((direction, Time.deltaTime));
@@ -108,7 +108,7 @@ public class PlayerMove : MonoBehaviour
 
         _animator.SetInteger("x", ApplyBorderConstraint(direction));
 
-        float finalSpeed = _speed += UpgradeManager.Instance._upgrades[2].CurrentValue;
+        float finalSpeed = _speed + UpgradeManager.Instance._upgrades[2].CurrentValue;
         transform.Translate(direction * finalSpeed * Time.deltaTime);
     }
 
