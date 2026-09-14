@@ -7,9 +7,11 @@ public class CustomButton : Button
     [SerializeField] private AudioSource _clickSound;
     [SerializeField] private Sprite _onSprite;
     [SerializeField] private Sprite _offSprite;
-    [SerializeField] private Image _buttonImage;
+    private Image _buttonImage => targetGraphic as Image;
 
     [SerializeField] private bool _isInitialOn;
+
+    //todo: 버튼의 종류 (토글, 연속클릭, 애니메이션 적용 등)에 따라 타입별로 사용하기
 
     public override void OnPointerClick(PointerEventData eventData)
     {
@@ -17,16 +19,8 @@ public class CustomButton : Button
         _clickSound.Play();
         if (_onSprite != null)
         {
-            if (_isInitialOn)
-            {
-                targetGraphic.GetComponent<Image>().sprite = _offSprite;
-                _isInitialOn = !_isInitialOn;
-            }
-            else
-            {
-                targetGraphic.GetComponent<Image>().sprite = _onSprite;
-                _isInitialOn = !_isInitialOn;
-            }
+            _buttonImage.sprite = _isInitialOn ? _offSprite : _onSprite;
+            _isInitialOn = !_isInitialOn;
         }
     }
 }
