@@ -708,7 +708,7 @@ MonoBehaviour:
   RightFirePoint: {fileID: 145465479}
   LeftSubFirePoint: {fileID: 733823643}
   RightSubFirePoint: {fileID: 274271021}
-  CoolTime: 0.5
+  CoolTime: 0.8
   CoolTimer: 0
   AutoFireMode: 0
 --- !u!50 &155925056
@@ -1070,6 +1070,7 @@ MonoBehaviour:
   _moveLimit: 2
   _playerSize: 1
   IsAutoMode: 0
+  enemyPool: {fileID: 1148195666}
 --- !u!1 &171306251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,7 +2256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletPool
   _pool: []
-  _poolSize: 30
+  _poolSize: 50
   _bulletPrefabs:
   - {fileID: 2976768758927101065, guid: 9ed9d354e1b89984d9d91d96b036c622, type: 3}
   - {fileID: 2976768758927101065, guid: 0ae773e15151803429405e991387aec0, type: 3}

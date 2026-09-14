@@ -57,7 +57,7 @@ public class PlayerFire : MonoBehaviour
         leftBullet.transform.position = LeftFirePoint.position; // 생성한 총알의 위치를 총구의 위치로
 
         Bullet rightBullet = BulletPool.Instance.CreateBullet(BulletType.Main);
-        leftBullet.OnSpawn();
+        rightBullet.OnSpawn();
         rightBullet.transform.position = RightFirePoint.position; // 생성한 총알의 위치를 총구의 위치로
 
         Bullet leftSubBullet = BulletPool.Instance.CreateBullet(BulletType.Sub);
