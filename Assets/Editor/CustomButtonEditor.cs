@@ -7,7 +7,6 @@ public class CustomButtonEditor : ButtonEditor
     private SerializedProperty _clickSound;
     private SerializedProperty _onSprite;
     private SerializedProperty _offSprite;
-    private SerializedProperty _buttonImage;
     private SerializedProperty _initialState;
 
     protected override void OnEnable()
@@ -17,6 +16,7 @@ public class CustomButtonEditor : ButtonEditor
         _clickSound = serializedObject.FindProperty("_clickSound");
         _onSprite = serializedObject.FindProperty("_onSprite");
         _offSprite = serializedObject.FindProperty("_offSprite");
+        _initialState = serializedObject.FindProperty("_isInitialOn");
     }
 
     public override void OnInspectorGUI()
@@ -28,6 +28,7 @@ public class CustomButtonEditor : ButtonEditor
         EditorGUILayout.PropertyField(_clickSound);
         EditorGUILayout.PropertyField(_onSprite);
         EditorGUILayout.PropertyField(_offSprite);
+        EditorGUILayout.PropertyField(_initialState);
 
         serializedObject.ApplyModifiedProperties();
     }
