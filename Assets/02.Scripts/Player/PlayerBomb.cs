@@ -17,7 +17,7 @@ public class PlayerBomb : MonoBehaviour
     {
         CoolTimer -= Time.deltaTime;
 
-        if (CoolTimer <= 0 && Input.GetKeyDown(KeyCode.B))
+        if (CoolTimer <= 0 && SimpleInput.GetKeyDown(KeyCode.B))
         {
             Fire();
             CoolTimer = _coolTime;

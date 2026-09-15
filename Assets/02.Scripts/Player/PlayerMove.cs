@@ -70,8 +70,8 @@ public class PlayerMove : MonoBehaviour
 
     public void Move()
     {
-        float h = Input.GetAxis("Horizontal"); // 키보드 왼.오른쪽 입력 상태에 따라 -1f~0~1f
-        float v = Input.GetAxis("Vertical"); // 키보드 위.아래 입력 상태에 따라 -1f~0~1f
+        float h = SimpleInput.GetAxisRaw("Horizontal"); // 키보드 왼.오른쪽 입력 상태에 따라 -1f~0~1f
+        float v = SimpleInput.GetAxisRaw("Vertical"); // 키보드 위.아래 입력 상태에 따라 -1f~0~1f
 
         Vector2 direction = new Vector2(h, v);
         if (transform.position.y >= 0 && direction.y >= 0)
