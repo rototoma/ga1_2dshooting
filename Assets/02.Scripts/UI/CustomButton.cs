@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CustomButton : Button
+public class CustomButton : Button, IPointerClickHandler
 {
     [SerializeField] private AudioSource _clickSound;
     [SerializeField] private Sprite _onSprite;
@@ -28,6 +28,7 @@ public class CustomButton : Button
     {
         base.OnPointerClick(eventData);
         _clickSound.Play();
+        // todo: 기본 사운드 만들어서 clickSound가 null일 경우에는 기본사운드 Play할 수 있도록
 
         if (_onSprite != null)
         {
