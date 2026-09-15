@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float _spawnInterval = 3f;
     [SerializeField] EnemySpawnDataTableSO _spawnData;
     private float _timer;
+    private int _totalWeight;
 
     // 생성 위치
     [SerializeField] private GameObject[] _spawnPoints;
@@ -20,6 +21,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        foreach (var data in _spawnData.Data)
+        {
+            _totalWeight += data.Weight;
+        }
     }
 
     private void Update()
@@ -43,13 +48,8 @@ public class EnemySpawner : MonoBehaviour
         // 30%: [1] Aimed
         // 20%: [2] Homing
 
-        int totalWeight = 0;
-        foreach (var data in _spawnData.Data)
-        {
-            totalWeight += data.Weight;
-        }
-
-        int radomWeight = UnityEngine.Random.Range(0, totalWeight);
+        int spawnIdx = UnityEngine.Random.Range(0, _spawnPoints.Length);
+        int radomWeight = UnityEngine.Random.Range(0, _totalWeight);
 
         int cumulativeWeight = 0;
         for (int i = 0; i < _spawnData.Data.Length; i++)
@@ -58,8 +58,8 @@ public class EnemySpawner : MonoBehaviour
             if (radomWeight < cumulativeWeight)
             {
                 Enemy enemy = EnemyPool.Instance.CreateEnemy((int)_spawnData.Data[i].Enemy.Type);
-                enemy.PlayerObj = PlayerObj.GetComponent<Player>();
-                enemy.transform.position = _spawnPoints[UnityEngine.Random.Range(0, 3)].transform.position;
+                enemy.PlayerObj = PlayerObj;
+                enemy.transform.position = _spawnPoints[spawnIdx].transform.position;
                 enemy.SetHealthBalance(GetHealthMultiplier());
                 return;
             }
