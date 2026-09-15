@@ -60,21 +60,21 @@ public class EnemySpawner : MonoBehaviour
                 Enemy enemy = EnemyPool.Instance.CreateEnemy((int)_spawnData.Data[i].Enemy.Type);
                 enemy.PlayerObj = PlayerObj.GetComponent<Player>();
                 enemy.transform.position = _spawnPoints[UnityEngine.Random.Range(0, 3)].transform.position;
-                enemy.GetComponent<Enemy>().SetHealthBalance(GetHealthMultiplier());
+                enemy.SetHealthBalance(GetHealthMultiplier());
                 return;
             }
         }
     }
 
-    public float GetHealthMultiplier()
+    private float GetHealthMultiplier()
     {
         float multiplier = 1.0f;
         int score = ScoreManager.Instance.GetScore();
-        foreach (var var in _enemyBalanceDataTableSo.Data)
+        foreach (var data in _enemyBalanceDataTableSo.Data)
         {
-            if (var.highscore < score)
+            if (data.highscore < score)
             {
-                multiplier = var.multiplier;
+                multiplier = data.multiplier;
             }
         }
 
