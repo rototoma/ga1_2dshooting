@@ -41,11 +41,17 @@ public class ScoreManager : MonoBehaviour
         return _bestScore;
     }
 
-    public void SpendScore(int value)
+    public bool SpendScore(int value)
     {
-        _currentScore -= value;
+        if (_currentScore >= value)
+        {
+            _currentScore -= value;
 
-        Refresh();
+            Refresh();
+            return true;
+        }
+
+        return false;
     }
 
     public void AddScore(int score)

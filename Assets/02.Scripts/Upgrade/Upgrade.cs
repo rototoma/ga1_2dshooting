@@ -22,6 +22,12 @@ public class Upgrade
     private int _cost;
     public int Cost => _cost;
 
+    public void SetLevel(int level)
+    {
+        _level = level;
+        Calculate();
+    }
+
     public void LevelUp()
     {
         _level += 1;

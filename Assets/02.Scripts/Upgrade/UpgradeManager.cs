@@ -31,17 +31,22 @@ public class UpgradeManager : MonoBehaviour
         RefreshUI();
     }
 
+    private void Start()
+    {
+        Load();
+    }
+
     public void LevelUp(int index)
     {
         Upgrade upgrade = _upgrades[index];
-        if (ScoreManager.Instance.Score < upgrade.Cost)
-        {
-            return;
-        }
 
-        ScoreManager.Instance.SpendScore(upgrade.Cost);
-        _upgrades[index].LevelUp();
-        RefreshUI();
+        bool isUpgraded = ScoreManager.Instance.SpendScore(upgrade.Cost);
+        if (isUpgraded)
+        {
+            _upgrades[index].LevelUp();
+            RefreshUI();
+            Save();
+        }
     }
 
     public void RefreshUI()
@@ -49,6 +54,26 @@ public class UpgradeManager : MonoBehaviour
         foreach (var uiUpgrade in _uiupgrades)
         {
             uiUpgrade.Refresh();
+        }
+    }
+
+    private void Save()
+    {
+        for (int i = 0; i < _upgrades.Length; i++)
+        {
+            PlayerPrefs.SetInt($"Upgrade.{i}.Level", _upgrades[i].Level);
+        }
+
+        PlayerPrefs.Save();
+    }
+
+    private void Load()
+    {
+        int level = 1;
+        for (int i = 0; i < _upgrades.Length; i++)
+        {
+            level = PlayerPrefs.GetInt($"Upgrade.{i}.Level", 1);
+            _upgrades[i].SetLevel(level);
         }
     }
 }
