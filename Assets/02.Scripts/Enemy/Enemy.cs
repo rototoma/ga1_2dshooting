@@ -8,6 +8,7 @@ public abstract class Enemy : MonoBehaviour
     protected Vector3 initialPlayerPos;
     [SerializeField] private float _health = 400;
     public float Health => _health;
+    private float _basehealth;
     [SerializeField] protected float moveSpeed = 1f;
     public float MoveSpeed => moveSpeed;
     private Animator _animator;
@@ -25,6 +26,7 @@ public abstract class Enemy : MonoBehaviour
         _animator = gameObject.GetComponent<Animator>();
         _damagedAudioSource = gameObject.GetComponent<AudioSource>();
         _itemSpawner = GameObject.FindGameObjectWithTag("ItemSpawner").GetComponent<ItemSpawner>();
+        _basehealth = _health;
     }
 
     private void Update()
@@ -55,6 +57,11 @@ public abstract class Enemy : MonoBehaviour
     public void SpawnDeathEffect()
     {
         Instantiate(_deathEffectPrefab, transform.position, Quaternion.identity);
+    }
+
+    public void SetHealthBalance(float multiplier)
+    {
+        _health = _basehealth * multiplier;
     }
 
     public void OnTriggerEnter2D(Collider2D other)

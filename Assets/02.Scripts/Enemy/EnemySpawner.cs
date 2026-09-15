@@ -16,6 +16,8 @@ public class EnemySpawner : MonoBehaviour
 
     public Player PlayerObj;
 
+    [SerializeField] private EnemyBalanceDataTableSO _enemyBalanceDataTableSo;
+
     private void Start()
     {
     }
@@ -49,7 +51,6 @@ public class EnemySpawner : MonoBehaviour
 
         int radomWeight = UnityEngine.Random.Range(0, totalWeight);
 
-
         int cumulativeWeight = 0;
         for (int i = 0; i < _spawnData.Data.Length; i++)
         {
@@ -59,8 +60,24 @@ public class EnemySpawner : MonoBehaviour
                 Enemy enemy = EnemyPool.Instance.CreateEnemy((int)_spawnData.Data[i].Enemy.Type);
                 enemy.PlayerObj = PlayerObj.GetComponent<Player>();
                 enemy.transform.position = _spawnPoints[UnityEngine.Random.Range(0, 3)].transform.position;
+                enemy.GetComponent<Enemy>().SetHealthBalance(GetHealthMultiplier());
                 return;
             }
         }
+    }
+
+    public float GetHealthMultiplier()
+    {
+        float multiplier = 1.0f;
+        int score = ScoreManager.Instance.GetScore();
+        foreach (var var in _enemyBalanceDataTableSo.Data)
+        {
+            if (var.highscore < score)
+            {
+                multiplier = var.multiplier;
+            }
+        }
+
+        return multiplier;
     }
 }

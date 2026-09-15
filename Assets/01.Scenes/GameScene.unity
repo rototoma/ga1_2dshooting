@@ -2022,6 +2022,7 @@ MonoBehaviour:
   - {fileID: 1761851621}
   - {fileID: 1071947232}
   PlayerObj: {fileID: 155925058}
+  _enemyBalanceDataTableSo: {fileID: 11400000, guid: be3b9bfd27cb83d4bbd06c73bb8c3e45, type: 2}
 --- !u!210 &751381156
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -2612,8 +2613,7 @@ MonoBehaviour:
   _clickSound: {fileID: 1477665149}
   _onSprite: {fileID: 1206005349077091292, guid: fb28c57cd074cfa49898cf8799ca343a, type: 3}
   _offSprite: {fileID: 2475711161320758719, guid: 5819b6aea3b343b45a18f643921f91a7, type: 3}
-  _buttonImage: {fileID: 0}
-  _initialState: 0
+  _isInitialOn: 0
 --- !u!1 &1555344660
 GameObject:
   m_ObjectHideFlags: 0
@@ -3011,7 +3011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletPool
   _pool: []
-  _poolSize: 50
+  _poolSize: 80
   _bulletPrefabs:
   - {fileID: 2976768758927101065, guid: 9ed9d354e1b89984d9d91d96b036c622, type: 3}
   - {fileID: 2976768758927101065, guid: 0ae773e15151803429405e991387aec0, type: 3}

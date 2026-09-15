@@ -84,5 +84,7 @@ public class UpgradeManager : MonoBehaviour
         {
             _upgrades[i].SetLevel(saveData.Level[i]);
         }
+
+        RefreshUI();
     }
 }
