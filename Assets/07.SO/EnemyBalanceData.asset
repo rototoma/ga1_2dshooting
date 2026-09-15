@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: EnemyBalanceData
   m_EditorClassIdentifier: Assembly-CSharp::EnemyBalanceDataTableSO
   Data:
-  - highscore: 1000
+  - highscore: 500
     multiplier: 1
-  - highscore: 5000
+  - highscore: 1000
     multiplier: 1.1
-  - highscore: 10000
+  - highscore: 5000
     multiplier: 1.2
-  - highscore: 50000
+  - highscore: 10000
     multiplier: 1.4
-  - highscore: 100000
+  - highscore: 50000
     multiplier: 1.7
